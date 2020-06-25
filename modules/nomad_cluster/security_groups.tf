@@ -135,22 +135,42 @@ resource "aws_security_group_rule" "nomad_egress_rpc" {
   source_security_group_id = aws_security_group.nomad.id
 }
 
-// This rule allows Nomad ingress Serf WAN
-resource "aws_security_group_rule" "nomad_ingress_serf" {
+// This rule allows Nomad ingress TCP Serf WAN
+resource "aws_security_group_rule" "nomad_tcp_ingress_serf" {
   security_group_id        = aws_security_group.nomad.id
   type                     = "ingress"
   from_port                = 4648
   to_port                  = 4648
-  protocol                 = "-1"
+  protocol                 = "tcp"
   source_security_group_id = aws_security_group.nomad.id
 }
 
-// This rule allows Nomad egress Serf WAN
-resource "aws_security_group_rule" "nomad_egress_serf" {
+// This rule allows Nomad egress TCP Serf WAN
+resource "aws_security_group_rule" "nomad_tcp_egress_serf" {
   security_group_id        = aws_security_group.nomad.id
   type                     = "egress"
   from_port                = 4648
   to_port                  = 4648
-  protocol                 = "-1"
+  protocol                 = "tcp"
+  source_security_group_id = aws_security_group.nomad.id
+}
+
+// This rule allows Nomad ingress UDP Serf WAN
+resource "aws_security_group_rule" "nomad_udp_ingress_serf" {
+  security_group_id        = aws_security_group.nomad.id
+  type                     = "ingress"
+  from_port                = 4648
+  to_port                  = 4648
+  protocol                 = "udp"
+  source_security_group_id = aws_security_group.nomad.id
+}
+
+// This rule allows Nomad egress UDP Serf WAN
+resource "aws_security_group_rule" "nomad_udp_egress_serf" {
+  security_group_id        = aws_security_group.nomad.id
+  type                     = "egress"
+  from_port                = 4648
+  to_port                  = 4648
+  protocol                 = "udp"
   source_security_group_id = aws_security_group.nomad.id
 }
