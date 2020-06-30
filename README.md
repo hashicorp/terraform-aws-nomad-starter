@@ -26,7 +26,7 @@ provider "random" {
 }
 
 module "nomad_cluster" {
-  source = "git@github.com:hashicorp/terraform-aws-nomad-espd.git"
+  source = "github.com/hashicorp/terraform-aws-nomad-oss"
 
   vpc_id         = "<your VPC id>"
   consul_version = "<consul version (ex: 1.7.4)>"
@@ -55,7 +55,7 @@ provider "random" {
 }
 
 module "nomad_cluster" {
-  source = "git@github.com:hashicorp/terraform-aws-nomad-espd.git?ref=v0.0.1"
+  source = "github.com/hashicorp/terraform-aws-nomad-oss?ref=v0.1.0"
 
   vpc_id         = "<your VPC id>"
   consul_version = "<consul version (ex: 1.7.4)>"
