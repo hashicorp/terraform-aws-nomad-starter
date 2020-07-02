@@ -73,4 +73,6 @@ module "nomad_cluster" {
 
 ## License
 
-This code is released under the MPL 2.0 License. Please see [LICENSE](./LICENSE) for more details.
+This code is released under the MPL 2.0 License. Please see
+[LICENSE](https://github.com/hashicorp/terraform-aws-nomad-oss/blob/master/LICENSE)
+for more details.
