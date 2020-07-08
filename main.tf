@@ -1,6 +1,7 @@
 module "nomad_cluster" {
   source = "./modules/nomad_cluster"
 
+  allowed_inbound_cidrs  = var.allowed_inbound_cidrs
   instance_type          = var.instance_type
   consul_version         = var.consul_version
   nomad_version          = var.nomad_version

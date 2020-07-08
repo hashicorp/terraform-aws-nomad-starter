@@ -26,16 +26,17 @@ provider "random" {
 }
 
 module "nomad-oss" {
-  source = "hashicorp/nomad-oss/aws"
-  version = "0.1.1"
-  vpc_id         = "<your VPC id>"
-  consul_version = "<consul version (ex: 1.7.4)>"
-  nomad_version  = "<nomad version (ex: 0.11.3)>"
-  owner          = "<owner name/tag>"
-  name_prefix    = "<name prefix you would like attached to your environment>"
-  key_name       = "<your SSH key name>"
-  nomad_servers  = 5
-  nomad_clients  = 3
+  source                = "hashicorp/nomad-oss/aws"
+  version               = "0.1.1"
+  allowed_inbound_cidrs = ["<list of inbound CIDRs>"]
+  vpc_id                = "<your VPC id>"
+  consul_version        = "<consul version (ex: 1.7.4)>"
+  nomad_version         = "<nomad version (ex: 0.11.3)>"
+  owner                 = "<owner name/tag>"
+  name_prefix           = "<name prefix you would like attached to your environment>"
+  key_name              = "<your SSH key name>"
+  nomad_servers         = 5
+  nomad_clients         = 3
 }
 ```
 
