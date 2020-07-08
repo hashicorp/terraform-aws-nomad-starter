@@ -5,6 +5,15 @@ resource "aws_security_group" "nomad" {
   vpc_id      = var.vpc_id
 }
 
+resource "aws_security_group_rule" "nomad_ssh" {
+  security_group_id = aws_security_group.nomad.id
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  cidr_blocks       = var.allowed_inbound_cidrs
+}
+
 # rule to allow egress from 443 to 443 externally
 resource "aws_security_group_rule" "nomad_external_egress_https" {
   security_group_id = aws_security_group.nomad.id
