@@ -5,8 +5,8 @@
 curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
 apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 apt-get update
-apt-get install -y consul=1:${consul_version}
-apt-get install -y nomad=1:${nomad_version}
+apt-get install -y consul=${consul_version}
+apt-get install -y nomad=${nomad_version}
 
 echo "Installing jq"
 curl --silent -Lo /bin/jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
