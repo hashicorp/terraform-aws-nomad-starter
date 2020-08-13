@@ -21,10 +21,6 @@ provider "aws" {
   region = "<your AWS region>"
 }
 
-provider "random" {
-  version = "~> 2.2"
-}
-
 module "nomad-oss" {
   source                = "hashicorp/nomad-oss/aws"
   version               = "0.1.1"
