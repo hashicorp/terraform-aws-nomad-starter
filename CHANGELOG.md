@@ -1,3 +1,9 @@
+## 0.2.1 (August 24, 2020)
+
+IMPROVEMENTS:
+
+* Added security group rules to expose Nomad and Consul API + UI to allowed CIDRs.
+
 ## 0.2.0 (August 13, 2020)
 
 IMPROVEMENTS:
