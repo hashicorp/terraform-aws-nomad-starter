@@ -94,6 +94,16 @@ resource "aws_security_group_rule" "consul_api_tcp" {
   source_security_group_id = aws_security_group.nomad.id
 }
 
+// Permit access from allowed inbound CIDRs.
+resource "aws_security_group_rule" "consul_api_ingress" {
+  security_group_id = aws_security_group.nomad.id
+  type              = "ingress"
+  from_port         = 8500
+  to_port           = 8500
+  protocol          = "tcp"
+  cidr_blocks       = var.allowed_inbound_cidrs
+}
+
 // This rule allows Consul DNS.
 resource "aws_security_group_rule" "consul_dns_tcp" {
   security_group_id        = aws_security_group.nomad.id
@@ -122,6 +132,16 @@ resource "aws_security_group_rule" "nomad_api_tcp" {
   to_port                  = 4646
   protocol                 = "tcp"
   source_security_group_id = aws_security_group.nomad.id
+}
+
+// Permit access from allowed inbound CIDRs.
+resource "aws_security_group_rule" "nomad_api_ingress" {
+  security_group_id = aws_security_group.nomad.id
+  type              = "ingress"
+  from_port         = 4646
+  to_port           = 4646
+  protocol          = "tcp"
+  cidr_blocks       = var.allowed_inbound_cidrs
 }
 
 // This rule allows Nomad ingress RPC.
