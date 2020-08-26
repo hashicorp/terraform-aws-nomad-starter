@@ -23,11 +23,11 @@ provider "aws" {
 
 module "nomad-oss" {
   source                = "hashicorp/nomad-oss/aws"
-  version               = "0.1.1"
+  version               = "<module version>"
   allowed_inbound_cidrs = ["<list of inbound CIDRs>"]
   vpc_id                = "<your VPC id>"
-  consul_version        = "<consul version (ex: 1.7.4)>"
-  nomad_version         = "<nomad version (ex: 0.11.3)>"
+  consul_version        = "<consul version (ex: 1.8.3)>"
+  nomad_version         = "<nomad version (ex: 0.12.3)>"
   owner                 = "<owner name/tag>"
   name_prefix           = "<name prefix you would like attached to your environment>"
   key_name              = "<your SSH key name>"
@@ -35,8 +35,18 @@ module "nomad-oss" {
   nomad_clients         = 3
 }
 ```
-
-Note: Currently the random provider is required for this module's functionality.
+- `version`: The Nomad AWS [module
+  version](https://registry.terraform.io/modules/hashicorp/nomad-oss/aws/0.2.1)
+  to pull (e.g. `0.2.1`) during the initialization
+- `allowed_inbound_cidrs`: Allowed CIDR blocks for SSH and API/UI access
+- `vpc_id`: ID of the VPC where cloud resources to be provisioned
+- `consul_version`: Desired [Consul
+  version](https://releases.hashicorp.com/consul/) to install
+- `nomad_version`: Desired [Nomad
+  version](https://releases.hashicorp.com/nomad/) to install
+- `key_name`: The name of the SSH [key
+  pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#prepare-key-pair)
+  to use. This must exist in the specified AWS `region`
 
 - Run `terraform init` and `terraform apply`
 
