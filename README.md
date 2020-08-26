@@ -13,8 +13,8 @@ For more advanced practitioners requiring  a wider variety of configurable optio
 
 ## How to Use This Module
 
-- Create a Terraform configuration that pulls in the module and specifies values
-  of the required variables:
+- Create a Terraform configuration (`main.tf`) that pulls in the module and
+  specifies values of the required variables:
 
 ```hcl
 provider "aws" {
@@ -48,7 +48,7 @@ module "nomad-oss" {
   pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#prepare-key-pair)
   to use. This must exist in the specified AWS `region`
 
-- Run `terraform init` and `terraform apply`
+Run `terraform init` and `terraform apply` to provision a Nomad cluster.
 
 
 ## License
