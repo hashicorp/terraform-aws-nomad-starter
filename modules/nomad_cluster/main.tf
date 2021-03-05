@@ -50,7 +50,6 @@ resource "aws_autoscaling_group" "nomad_servers" {
   wait_for_capacity_timeout = "480s"
   health_check_grace_period = 15
   health_check_type         = "EC2"
-  //vpc_zone_identifier       = data.aws_subnet_ids.default.ids
   tags = [
     {
       key                 = "Name"
