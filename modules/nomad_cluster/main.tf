@@ -14,6 +14,10 @@ data "aws_subnet_ids" "default" {
 # data source for availability zones
 data "aws_availability_zones" "available" {
   state = "available"
+  filter {
+    name   = "opt-in-status"
+    values = ["opt-in-not-required"]
+  }
 }
 
 # data source for vanilla Ubuntu AWS AMI as base image for cluster
@@ -50,7 +54,6 @@ resource "aws_autoscaling_group" "nomad_servers" {
   wait_for_capacity_timeout = "480s"
   health_check_grace_period = 15
   health_check_type         = "EC2"
-  vpc_zone_identifier       = data.aws_subnet_ids.default.ids
   tags = [
     {
       key                 = "Name"
