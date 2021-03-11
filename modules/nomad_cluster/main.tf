@@ -7,17 +7,8 @@ data "aws_vpc" "nomad_vpc" {
 }
 
 # data source for subnet ids in VPC
-data "aws_subnet_ids" "default" {
+data "aws_subnet_ids" "available" {
   vpc_id = data.aws_vpc.nomad_vpc.id
-}
-
-# data source for availability zones
-data "aws_availability_zones" "available" {
-  state = "available"
-  filter {
-    name   = "opt-in-status"
-    values = ["opt-in-not-required"]
-  }
 }
 
 # data source for vanilla Ubuntu AWS AMI as base image for cluster
@@ -47,7 +38,7 @@ resource "random_id" "environment_name" {
 resource "aws_autoscaling_group" "nomad_servers" {
   name                      = aws_launch_configuration.nomad_servers.name
   launch_configuration      = aws_launch_configuration.nomad_servers.name
-  availability_zones        = data.aws_availability_zones.available.zone_ids
+  vpc_zone_identifier       = data.aws_subnet_ids.available.ids
   min_size                  = var.nomad_servers
   max_size                  = var.nomad_servers
   desired_capacity          = var.nomad_servers

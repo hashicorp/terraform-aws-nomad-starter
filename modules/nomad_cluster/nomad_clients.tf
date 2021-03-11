@@ -2,7 +2,7 @@
 resource "aws_autoscaling_group" "nomad_clients" {
   name                      = aws_launch_configuration.nomad_clients.name
   launch_configuration      = aws_launch_configuration.nomad_clients.name
-  availability_zones        = data.aws_availability_zones.available.zone_ids
+  vpc_zone_identifier       = data.aws_subnet_ids.available.ids
   min_size                  = var.nomad_clients
   max_size                  = var.nomad_clients
   desired_capacity          = var.nomad_clients
