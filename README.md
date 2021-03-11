@@ -14,31 +14,22 @@ For more advanced practitioners requiring  a wider variety of configurable optio
 ## How to Use This Module
 
 - Create a Terraform configuration (`main.tf`) that pulls in the module and
-  specifies values of the required variables:
+  specifies values of the required variables. You may use the contents of the
+  [`main.tf`](main.tf) file as your module definition if adding this to your
+  existing infrastructure by changing the source of the module definition.
 
-```hcl
-provider "aws" {
-  region = "<your AWS region>"
-}
+  ```hcl
+  module "nomad_cluster" {
+    source = "hashicorp/nomad-starter/aws"
+    version = "0.2.1"
+    ... <snip>
+  }
+  ```
 
-module "nomad-oss" {
-  source                = "hashicorp/nomad-oss/aws"
-  version               = "<module version>"
-  allowed_inbound_cidrs = ["<list of inbound CIDRs>"]
-  vpc_id                = "<your VPC id>"
-  consul_version        = "<consul version (ex: 1.8.3)>"
-  nomad_version         = "<nomad version (ex: 0.12.3)>"
-  owner                 = "<owner name/tag>"
-  name_prefix           = "<name prefix you would like attached to your environment>"
-  key_name              = "<your SSH key name>"
-  nomad_servers         = 5
-  nomad_clients         = 3
-}
-```
 - `version`: The Nomad AWS [module
-  version](https://registry.terraform.io/modules/hashicorp/nomad-oss/aws/0.2.1)
+  version](https://registry.terraform.io/modules/hashicorp/nomad-starter/aws/latest)
   to pull (e.g. `0.2.1`) during the initialization
-- `allowed_inbound_cidrs`: Allowed CIDR blocks for SSH and API/UI access
+- `allowed_inbound_cidrs`: Allowed CIDR blocks for SSH and API/UI access. You can find your public IP from [whatismyip](https://www.whatsmyip.org/). (e.g. The value for this would look like `"1.1.1.1/32"`)
 - `vpc_id`: ID of the VPC where cloud resources to be provisioned
 - `consul_version`: Desired [Consul
   version](https://releases.hashicorp.com/consul/) to install
