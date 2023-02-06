@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 # creates Nomad autoscaling group for clients
 resource "aws_autoscaling_group" "nomad_clients" {
   name                      = aws_launch_configuration.nomad_clients.name

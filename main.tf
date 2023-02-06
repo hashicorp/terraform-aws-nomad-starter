@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 module "nomad_cluster" {
   source = "./modules/nomad_cluster"
 
