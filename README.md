@@ -22,7 +22,7 @@ provider "aws" {
 }
 
 module "nomad-oss" {
-  source                = "hashicorp/nomad-oss/aws"
+  source                = "hashicorp/nomad-starter/aws"
   version               = "<module version>"
   allowed_inbound_cidrs = ["<list of inbound CIDRs>"]
   vpc_id                = "<your VPC id>"
