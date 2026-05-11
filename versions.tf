@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2020, 2026
+
 # names required TF version
 terraform {
   required_version = ">= 0.13"

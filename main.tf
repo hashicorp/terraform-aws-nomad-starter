@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2020, 2026
+
 module "nomad_cluster" {
   source = "./modules/nomad_cluster"
 
