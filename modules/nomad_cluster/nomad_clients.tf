@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2020, 2026
+
 # creates Nomad autoscaling group for clients
 resource "aws_autoscaling_group" "nomad_clients" {
   name                      = aws_launch_configuration.nomad_clients.name

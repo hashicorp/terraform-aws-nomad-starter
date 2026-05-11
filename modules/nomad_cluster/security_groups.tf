@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2020, 2026
+
 # creates security group to group access rules under - named with a random UUId and suffix (why?)
 resource "aws_security_group" "nomad" {
   name        = "${random_id.environment_name.hex}-nomad-sg"

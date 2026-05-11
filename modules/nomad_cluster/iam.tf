@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2020, 2026
+
 # creates new instance role profile (noted by name_prefix which forces new resource) for named instance role
 # uses random UUID & suffix
 # see: https://www.terraform.io/docs/providers/aws/r/iam_instance_profile.html

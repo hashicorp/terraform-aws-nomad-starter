@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2020, 2026
+
 # data source for current (working) aws region
 data "aws_region" "current" {}
 
